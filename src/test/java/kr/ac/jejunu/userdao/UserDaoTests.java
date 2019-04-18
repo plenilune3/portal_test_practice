@@ -13,7 +13,8 @@ public class UserDaoTests {
         Long id = 1l;
         String name = "허윤호";
         String password = "1234";
-        UserDao userDao = new UserDao(new JejuConnectionMaker());
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getUserDao();
         User user = userDao.get(id);
         assertThat(user.getId(), is(id));
         assertThat(user.getName(), is(name));
@@ -23,7 +24,8 @@ public class UserDaoTests {
     public void testAdd() throws SQLException, ClassNotFoundException {
         String name = "헐크";
         String password = "1111";
-        UserDao userDao = new UserDao(new JejuConnectionMaker());
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getUserDao();
         User user = new User();
         user.setName(name);
         user.setPassword(password);
@@ -39,7 +41,8 @@ public class UserDaoTests {
         Long id = 1l;
         String name = "헐크";
         String password = "1111";
-        UserDao userDao = new UserDao(new hallaConnectionMaker());
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getUserDao();
         User user = userDao.get(id);
         assertThat(user.getId(), is(id));
         assertThat(user.getName(), is(name));
